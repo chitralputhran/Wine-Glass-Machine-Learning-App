@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="{{url_for('static', filename= 'favicon.ico')}}" type="image/x-icon"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename= 'apple-touch-icon.png')}}">
+      <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'favicon-32x32.png')}}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename= 'favicon-16x16.png')}}">
+        <link rel="manifest" href="{{url_for('static', filename= 'site.webmanifest')}}">
+    
+    <title>Wine Glass | ML App</title>
+  </head>
+  <body>
+
+      <div class="jumbotron">
+
+          <div class = "container">
+        <h1 class="display-4"> <img src="{{url_for('static', filename= 'android-chrome-192x192.png')}}" >Wine Glass | Machine Learning App  </h1>
+        <br>
+        <br>
+        <p class="lead">This is a web application made with the help of Flask, a microframework for Python based on Werkzeug, Jinja 2, 
+          and good intentions. On the backend, a machine learning model is classifying the wine sample entered as good or bad. 
+          The machine learning model was trained on the Wine Quality Dataset from the UCI Machine Learning Repository. </p>
+          
+        <hr class="my-4">
+        <p>Using the range slider below, enter the values for each feature and hit the submit button. 
+          The features will then my forwarded to the machine learning model to evaluation. 
+          For more projects like these, just click on the Github button. </p>
+        <a class="btn btn-primary btn-lg" href="https://chitralputhran.github.io/" role="button">GitHub Portfolio</a>
+        </div>
+        </div>
+      
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+    <p class="font-weight-bold">Input Features:</p>
+    <form action="{{ url_for('predict')}}" method="post">
+      <div class="row">
+        <div class="col-sm">
+      <label for="faInputId">Fixed Acidity:</label>
+      <input type="range" name="faInputName" id="faInputId" value="3" min="3" max="15" step="0.1" oninput="faOutputId.value = faInputId.value">
+    <output name="faOutputName" id="faOutputId">3</output>
+
+    <br>
+      <label>Volatile Acidity:</label>
+       <input type="range" name="vaInputName" id="vaInputId" value="0" min="0" max="2" step="0.01" oninput="vaOutputId.value = vaInputId.value">
+    <output name="vaOutputName" id="vaOutputId">0</output>
+    <br>
+
+    <label>Citric Acid:</label>
+       <input type="range" name="caInputName" id="caInputId" value="0" min="0" max="2" step="0.01" oninput="caOutputId.value = caInputId.value">
+    <output name="caOutputName" id="caOutputId">0</output>
+
+<br>
+    <label>Residual Sugar:</label>
+       <input type="range" name="rsInputName" id="rsInputId" value="0" min="0" max="66" step="0.1" oninput="rsOutputId.value = rsInputId.value">
+    <output name="rsOutputName" id="rsOutputId">0</output>
+    <br>
+     </div>
+    <div class="col-sm">
+     <label>Chlorides:</label>
+       <input type="range" name="chInputName" id="chInputId" value="0" min="0" max="1" step="0.01" oninput="chOutputId.value = chInputId.value">
+    <output name="chOutputName" id="chOutputId">0</output>
+<br>
+       <label>Free Sulfur dioxide:</label>
+       <input type="range" name="fsInputName" id="fsInputId" value="2" min="2" max="289" step="0.1" oninput="fsOutputId.value = fsInputId.value">
+    <output name="fsOutputName" id="fsOutputId">0</output>
+<br>
+      <label>Total Sulfur dioxide:</label>
+       <input type="range" name="tsInputName" id="tsInputId" value="9" min="9" max="440" step="0.1" oninput="tsOutputId.value = tsInputId.value">
+    <output name="tsOutputName" id="tsOutputId">0</output> 
+
+<br>
+
+      <label>Density:</label>
+       <input type="range" name="dsInputName" id="dsInputId" value="0" min="0" max="1" step="0.1" oninput="dsOutputId.value = dsInputId.value">
+    <output name="dsOutputName" id="dsOutputId">0</output> 
+<br>
+ </div>
+  <div class="col-sm">
+     <label>pH:</label>
+       <input type="range" name="pHInputName" id="pHInputId" value="0" min="0" max="4" step="0.1" oninput="pHOutputId.value = pHInputId.value">
+    <output name="pHOutputName" id="pHOutputId">0</output>
+    <br>
+
+     <label>Sulphates:</label>
+       <input type="range" name="spInputName" id="spInputId" value="0" min="0" max="1" step="0.1" oninput="spOutputId.value = spInputId.value">
+    <output name="spOutputName" id="spOutputId">0</output> 
+
+    <br>
+
+      <label>Alcohol:</label>
+       <input type="range" name="alInputName" id="alInputId" value="0" min="0" max="1" step="0.1" oninput="alOutputId.value = alInputId.value">
+    <output name="alOutputName" id="alOutputId">0</output>
+    <br>
+     </div>
+      </div>
+    <br>
+    <button class="btn btn-success  btn-block" value='submit' type="submit">Submit</button>
+    </form>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="page-footer">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+          <a href="https://chitralputhran.github.io"> Chitral Puthran</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

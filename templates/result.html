@@ -1,0 +1,170 @@
+ <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      .table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}
+    </style>
+<link rel="shortcut icon" href="{{url_for('static', filename= 'favicon.ico')}}" type="image/x-icon"/>
+<link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename= 'apple-touch-icon.png')}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'favicon-32x32.png')}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename= 'favicon-16x16.png')}}">
+    <link rel="manifest" href="{{url_for('static', filename= 'site.webmanifest')}}">
+
+<title>Wine Glass | ML App</title>
+</head>
+<body>
+
+  <div class="jumbotron">
+
+      <div class = "container">
+    <h1 class="display-4"> <img src="{{url_for('static', filename= 'android-chrome-192x192.png')}}" >Wine Glass | Machine Learning App  </h1>
+    <br>
+    <br>
+    <p class="lead">This is a web application made with the help of Flask, a microframework for Python based on Werkzeug, Jinja 2, 
+      and good intentions. On the backend, a machine learning model is classifying the wine sample entered as good or bad. 
+      The machine learning model was trained on the Wine Quality Dataset from the UCI Machine Learning Repository. </p>
+      
+    <hr class="my-4">
+    <p>Using the range slider below, enter the values for each feature and hit the submit button. 
+      The features will then my forwarded to the machine learning model to evaluation. 
+      For more projects like these, just click on the Github button. </p>
+    <a class="btn btn-primary btn-lg" href="https://chitralputhran.github.io/" role="button">GitHub Portfolio</a>
+    </div>
+    </div>
+  
+
+  <br>
+  <br>
+
+	<div class = "container">
+    <p class="font-weight-bold">Verdict by the model:</p>
+    {% if y_pred == 1 %}
+		<div class="alert alert-success" role="alert">
+        It is a good wine, model score {{ y_prob[0]*100 }}
+    </div>
+    {% else %}
+    <div class="alert alert-danger" role="alert">
+        Not a good quality wine, model score: {{ y_prob[0]*100 }}
+    </div>
+     {% endif %}
+  </div>
+  
+  <br>
+
+  <div class = "container">
+      <table class="table table-hover table-bordered">
+          <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Feature</th>
+                <th scope="col">Value Inserted</th>
+            </tr>
+          </thead>
+       
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+            <td>Fixed Acidity</td>
+              <td> {{ fa }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">2</th>
+        <td>Volatile Acidity</td>
+        <td> {{ va }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">3</th>
+        <td>Citric Acid</td>
+        <td> {{ ca }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">4</th>
+        <td>Residuak Sugar</td>
+        <td> {{ rs }} </td>
+      </tr>
+  
+  
+      <tr>
+        <th scope="row">5</th>
+        <td>Chlorides</td>
+        <td> {{ ch }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">6</th>
+        <td>Free Sulfur dioxide</td>
+        <td> {{ fs }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">7</th>
+        <td>Total Sulfur dioxide</td>
+        <td> {{ ts }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">8</th>
+        <td>Density</td>
+        <td> {{ ds }} </td>
+      </tr>
+  
+  
+        <tr>
+        <th scope="row">9</th>
+        <td>pH</td>
+        <td> {{ pH }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">10</th>
+        <td>Sulphates</td>
+        <td> {{ sp }} </td>
+      </tr>
+  
+      <tr>
+        <th scope="row">11</th>
+        <td>Alcohol</td>
+        <td> {{ al }} </td>
+      </tr>
+  
+  
+      </tbody>
+      </table>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+      <footer class="page-footer">
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="https://chitralputhran.github.io"> Chitral Puthran</a>
+      </div>
+      <!-- Copyright -->
+    
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
