@@ -6,6 +6,6 @@ This is a web application made with the help of Flask, a microframework for Pyth
 
 <br><br>
 
-### Homepage
+### Home-Page
 <br>
-![](Homepage.png)
+![ ](Homepage.png)
